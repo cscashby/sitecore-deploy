@@ -19,6 +19,7 @@ Get-Disk |
 				write-host "Exception Type: $($_.Exception.GetType().FullName)" -ForegroundColor "Red"
 				write-host "Exception Message: $($_.Exception.Message)" -ForegroundColor "Red"
 			}
+			Set-Disk -Number $diskNumber -isOffline $false
 			write-host -ForegroundColor "Green" "Creating D in $($diskNumber)" 
 			New-Partition -DiskNumber $diskNumber -UseMaximumSize -AssignDriveLetter -DriveLetter "D"
 		}
