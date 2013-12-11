@@ -1,4 +1,4 @@
-Install-WindowsFeature -ConfigurationFilePath .\DeploymentConfigTemplate.xml -Restart
+Install-WindowsFeature -ConfigurationFilePath ..\configs\DeploymentConfigTemplate.xml -Restart
 
 Get-Disk |
 	Where-Object -FilterScript {
@@ -19,6 +19,6 @@ Get-Disk |
 				write-host "Exception Type: $($_.Exception.GetType().FullName)" -ForegroundColor "Red"
 				write-host "Exception Message: $($_.Exception.Message)" -ForegroundColor "Red"
 			}
-			write-host -ForegroundColor "Green" "Creating D" 
+			write-host -ForegroundColor "Green" "Creating D in $($diskNumber)" 
 			New-Partition -DiskNumber $diskNumber -UseMaximumSize -AssignDriveLetter -DriveLetter "D"
 		}
